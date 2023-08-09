@@ -1,6 +1,15 @@
 #include <cs50.h>
 #include <stdio.h>
 
+unsigned char SPACE = 32;
+unsigned char HASHTAG = 35;
+
+void writer(char character, int repeat){
+  for(int i=0; i < repeat; i++){
+    printf("%c",character);
+  }
+}
+
 int main(void) 
 {
     int height = 0;
@@ -12,20 +21,11 @@ int main(void)
     while(height > 8 || height <1);
     //printf("Height: %i\n",height);
     for(int i= 1; i <= height; ++i){ 
-      int spaceTour;  
-      for(spaceTour=0; spaceTour < height-i; ++spaceTour){
-        printf(" ");
-      }
-      for (int hasTour = 0; hasTour < height-spaceTour; ++hasTour){
-        printf("#");
-      }
+      writer(SPACE,height-i);
+      writer(HASHTAG,i);
       printf("  ");
-      for (int hasTour = 0; hasTour < height-spaceTour; ++hasTour){
-        printf("#");
-      }
-      for(spaceTour=0; spaceTour < height-i; ++spaceTour){
-        printf(" ");
-      }
-    printf("\n"); 
+      writer(HASHTAG,i);
+      //writer(SPACE,height-i);
+      printf("\n");
     }
 }
